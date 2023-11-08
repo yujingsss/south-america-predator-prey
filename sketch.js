@@ -147,8 +147,6 @@ const circles = svg.append("g")
     .on("click", function (event, d) {
         event.stopPropagation();
 
-        d3.select("#titleText").selectAll("tspan").remove();
-
         clicked = !clicked;
 
         const T = d3.selectAll(".text").select(function (k, j) {
@@ -167,6 +165,7 @@ const circles = svg.append("g")
             circles.attr("fill-opacity", 0.2);
             texts.attr("fill-opacity", 0.75).attr("fill", "#F0F0F0");
             lines.attr("opacity", 0.2);
+            d3.select("#titleText").selectAll("tspan").attr("opacity", 0);
 
             let t = 3.5;
             let diffX = size.width / 2 - d.x;
@@ -190,6 +189,7 @@ const circles = svg.append("g")
             circles.attr("fill-opacity", 1);
             texts.attr("fill-opacity", 1).attr("fill", "#FA2A05");
             lines.attr("opacity", 0.8);
+            d3.select("#titleText").selectAll("tspan").attr("opacity", 1);
 
             svg.transition()
                 .delay("15")
